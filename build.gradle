@@ -25,18 +25,25 @@ repositories {
 	mavenCentral()
 }
 
+ext {
+	springCloudAwsVersion = '3.4.0'
+}
+
 dependencies {
+	implementation platform("io.awspring.cloud:spring-cloud-aws-dependencies:${springCloudAwsVersion}")
+	implementation 'org.springframework.boot:spring-boot-starter-logging'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	
-	implementation 'com.h2database:h2' // Added H2 support
+	implementation 'org.postgresql:postgresql:42.6.0'
+	
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	annotationProcessor 'org.projectlombok:lombok'
 
-    implementation("io.awspring.cloud:spring-cloud-aws-starter:3.4.0")
-	implementation("io.awspring.cloud:spring-cloud-aws-secrets-manager:3.4.0")
+    implementation("io.awspring.cloud:spring-cloud-aws-starter:${springCloudAwsVersion}")
+	implementation("io.awspring.cloud:spring-cloud-aws-secrets-manager:${springCloudAwsVersion}")
 
 	implementation 'org.springframework.boot:spring-boot-starter-tomcat'
 
@@ -46,7 +53,7 @@ dependencies {
 	// Integration test dependencies
 	testImplementation 'org.springframework.boot:spring-boot-starter-test' // Reuse for integration tests
 	testImplementation 'org.testcontainers:junit-jupiter:1.19.0'
-	testImplementation 'org.testcontainers:mysql:1.19.0'
+	testImplementation 'com.h2database:h2' // Added H2 support
 }
 
 tasks.named('test') {
