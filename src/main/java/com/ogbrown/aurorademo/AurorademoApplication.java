@@ -2,9 +2,11 @@ package com.ogbrown.aurorademo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-public class AurorademoApplication{
+@EnableJpaRepositories
+public class AurorademoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AurorademoApplication.class, args);
