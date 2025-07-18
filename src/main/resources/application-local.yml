@@ -12,6 +12,9 @@ spring:
     # url: jdbc:postgresql://localhost:5432/aurorademo
     driver-class-name: org.postgresql.Driver
     username: app_pgrw
+    hikari:
+      minimum-idle: 1
+      maximum-pool-size: 1
   jpa:
     properties:
       hibernate:
