@@ -10,15 +10,21 @@ spring:
   #     path: /h2-console
   datasource:
     # url: jdbc:postgresql://localhost:5432/aurorademo
+    url: jdbc:postgresql://ogb-aurora-lowcost-dev-v2-instance.crvmjxdhbtvr.us-east-2.rds.amazonaws.com?currentSchema=message_service
     driver-class-name: org.postgresql.Driver
     username: app_pgrw
     hikari:
       minimum-idle: 1
       maximum-pool-size: 1
+    sql:
+      init:
+        schema-locations: classpath:/db/schema/message_service.sql
   jpa:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: create-drop
   config:
     import: aws-secretsmanager:local/dev
   devtools:
